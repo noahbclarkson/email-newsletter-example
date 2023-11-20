@@ -6,7 +6,7 @@ use email_newsletter_example::{
     telemetry::{get_subscriber, init_subscriber},
 };
 use secrecy::ExposeSecret as _;
-use sqlx::{postgres::PgPoolOptions, PgPool};
+use sqlx::postgres::PgPoolOptions;
 
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
