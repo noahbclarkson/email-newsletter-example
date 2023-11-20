@@ -11,6 +11,3 @@ Cargo.lock
 
 # Added by cargo
 /target
-
-# .cargo directory
-.cargo

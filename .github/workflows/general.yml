@@ -13,6 +13,9 @@ jobs:
       - uses: actions/checkout@v3
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
+      - name: Check sqlx-data.json is up-to-date
+        run: |
+          cargo sqlx prepare --workspace --check
       - name: Run tests
         run: cargo test
 
