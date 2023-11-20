@@ -1,7 +1,7 @@
 # Builder stage
 FROM lukemathwalker/cargo-chef:latest-rust-1 AS chef
 WORKDIR /app
-RUN apt update && apt install lld clang -y
+RUN apt update && apt install lld clang -y && apt install libc6 -y
 FROM chef as planner
 COPY . .
 RUN cargo chef prepare --recipe-path recipe.json
@@ -20,7 +20,6 @@ FROM debian:bullseye-slim AS runtime
 WORKDIR /app
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends openssl ca-certificates \
-    && sudo apt install libc6 -y \
     # Clean up
     && apt-get autoremove -y \
     && apt-get clean -y \
