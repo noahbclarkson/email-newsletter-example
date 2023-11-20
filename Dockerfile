@@ -16,11 +16,10 @@ ENV SQLX_OFFLINE true
 # Build our project
 RUN cargo build --release --bin email-newsletter-example
 
-FROM debian:bullseye-slim AS runtime
+FROM debian:bookworm-slim AS runtime
 WORKDIR /app
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends openssl ca-certificates \
-    && apt-get install libc6 -y \
     # Clean up
     && apt-get autoremove -y \
     && apt-get clean -y \
